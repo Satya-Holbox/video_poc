@@ -24,12 +24,12 @@ def generate_video_with_veo3(veo3_prompt, output_gcs_uri):
             config=video_config,
         )
 
-        print(f"Operation started with name: {operation.operation.name}")
+        print(f"Operation started with name: {operation}")
         print("Polling for completion... (this may take a few minutes)")
 
         while not operation.done:
-            time.sleep(15)
-            operation = client.operations.get(operation.operation.name)
+            time.sleep(25)
+            operation = client.operations.get(operation)
             print(f"Operation status: {'Done' if operation.done else 'In progress'}")
 
         if operation.response:
